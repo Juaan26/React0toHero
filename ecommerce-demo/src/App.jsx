@@ -1,13 +1,23 @@
 import './App.css'
-import { Header } from './components/Header'
-import { Products } from './components/Products'
+import { useState } from 'react'
+import { products } from './mocks/products.json'
+import { Home } from './components/Home'
+import { Login } from './Login'
 function App() {
 
+  const [user, setUser] = useState([])
+  console.log(user)
   return (
     <>
-      <Header />
-      <Products />
+      {
+        !user.length > 0
+          ?
+          <Login setUser={ setUser } />
+          :
+          <Home products={ products } />
+      }
     </>
+
   )
 }
 
